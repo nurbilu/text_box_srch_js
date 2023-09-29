@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Search</title>
+</head>
+<body>
+    <h1>Array Search</h1>
+
+    <!-- Input for the array -->
+    <label for="arrayInput">Enter values separated by commas:</label>
+    <input type="text" id="arrayInput">
+    <button onclick="updateArray()">Submit</button>
+
+    <!-- Input for searching -->
+    <label for="searchInput">Search:</label>
+    <input type="text" id="searchInput" onkeyup="searchArray()">
+
+    <!-- Display area for the array -->
+    <div id="arrayDisplay"></div>
+
+    <script>
+        let originalArray = [];
+
+        function updateArray() {
+            const inputElement = document.getElementById("arrayInput");
+            const arrayDisplay = document.getElementById("arrayDisplay");
+
+            // Split the input values by commas and trim any leading/trailing spaces
+            originalArray = inputElement.value.split(",").map(item => item.trim());
+
+            // Display the array
+            arrayDisplay.textContent = "Array: " + originalArray.join(", ");
+        }
+
+        function searchArray() {
+            const searchInput = document.getElementById("searchInput");
+            const arrayDisplay = document.getElementById("arrayDisplay");
+
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            // Filter the original array based on the search term
+            const filteredArray = originalArray.filter(item => item.toLowerCase().includes(searchTerm));
+
+            // Display the filtered array
+            arrayDisplay.textContent = "Filtered Array: " + filteredArray.join(", ");
+        }
+    </script>
+</body>
+</html>
